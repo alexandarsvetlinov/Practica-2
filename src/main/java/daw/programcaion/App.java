@@ -35,7 +35,8 @@ public class App {
 
                     break;
                 case 4:
-
+                    System.out.print("¿Cual es el ID de la obra que quieres mostrar? ");
+                    Almacen.visualizarObraPorId(escaner.nextInt());
                     break;
                 case 5:
 

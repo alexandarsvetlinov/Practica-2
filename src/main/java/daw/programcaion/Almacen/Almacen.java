@@ -109,6 +109,40 @@ public class Almacen {
 
         }
     }
+    public static void visualizarObraPorId(int id) {
+
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+
+        Boolean existe = false;
+
+        String tipoEncontrado = existeObra(id);
+
+        if (!tipoEncontrado.equals("noExiste")) {
+            existe = true;
+        }
+
+        if (existe) {
+
+            int posicionArray = Integer.parseInt(tipoEncontrado.substring(tipoEncontrado.length() - 1));
+
+            System.out.println("********************************************");
+            System.out.println("*      La pintura ha sido encontrada       *");
+            System.out.println("********************************************");
+            System.out.println();
+
+            if (tipoEncontrado.contains("pintura")) {
+                System.out.println(pinturasTotales[posicionArray]);
+            } else {
+                System.out.println(esculturasTotales[posicionArray]);
+            }
+        } else {
+            System.out.println("**********************************************");
+            System.out.println("* La pintura con ID: " + id + " no ha sido encontrada *");
+            System.out.println("**********************************************");
+        }
+
+    }
 
     private static int generadorId() {
 
