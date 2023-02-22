@@ -143,6 +143,183 @@ public class Almacen {
         }
 
     }
+    public static void modificarObra(Scanner escaner, int idObra) {
+
+        String tipo = existeObra(idObra);
+
+        if (!tipo.equals("noExiste")) {
+
+            int posicionArray = Integer.parseInt(tipo.substring(tipo.length() - 1));
+
+            System.out.println("*************************************************");
+            System.out.println("*     Comenzamos el proceso de modificación      *");
+            System.out.println("*Deja en blanco aquello que no quieras modificar *");
+            System.out.println("*************************************************");
+            System.out.println();
+            System.out.println("*             Vas a modificar al obra           *");
+            System.out.println("*************************************************");
+            System.out.println();
+            escaner.nextLine();
+            visualizarObraPorId(idObra);
+            System.out.println();
+            System.out.print("Introduzca nombre: ");
+            String nombre = escaner.nextLine();
+
+            System.out.print("Introduzca autor: ");
+            String autor = escaner.nextLine();
+
+            System.out.print("Introduzca precio: ");
+            Double precio = null;
+
+            String linea = escaner.nextLine();
+
+            if (!linea.isBlank()) {
+
+                try {
+                    precio = Double.parseDouble(linea);
+                } catch (Exception e) {
+                    System.out.print("Valor erroneo ");
+                    System.out.print("Introduzca un doubel: ");
+                    while (!escaner.hasNextDouble()) {
+                        System.out.print("Valor erroneo ");
+                        escaner.next();
+                        System.out.print("Introduzca un doubel: ");
+                    }
+                    precio = escaner.nextDouble();
+                }
+
+            }
+
+            System.out.print("Introduzca altura: ");
+            linea = "";
+            linea = escaner.nextLine();
+
+            Double altura = null;
+
+            if (!linea.isBlank()) {
+
+                try {
+                    altura = Double.parseDouble(linea);
+                } catch (Exception e) {
+                    System.out.print("Valor erroneo ");
+                    System.out.print("Introduzca un doubel: ");
+                    while (!escaner.hasNextDouble()) {
+                        System.out.print("Valor erroneo ");
+                        escaner.next();
+                        System.out.print("Introduzca un doubel: ");
+                    }
+                    altura = escaner.nextDouble();
+                }
+
+            }
+
+            System.out.print("Introduzca peso: ");
+            Double peso = null;
+
+            linea = escaner.nextLine();
+
+            if (!linea.isBlank()) {
+
+                try {
+                    peso = Double.parseDouble(linea);
+                } catch (Exception e) {
+                    System.out.print("Valor erroneo ");
+                    System.out.print("Introduzca un doubel: ");
+                    while (!escaner.hasNextDouble()) {
+                        System.out.print("Valor erroneo ");
+                        escaner.next();
+                        System.out.print("Introduzca un doubel: ");
+                    }
+                    peso = escaner.nextDouble();
+                }
+
+            }
+
+            System.out.print("Introduzca piezas: ");
+            int piezas = -1;
+            linea = escaner.nextLine();
+
+            if (!linea.isBlank()) {
+
+                try {
+                    piezas = Integer.parseInt(linea);
+                } catch (Exception e) {
+                    System.out.print("Valor erroneo ");
+                    System.out.print("Introduzca un doubel: ");
+                    while (!escaner.hasNextInt()) {
+                        System.out.print("Valor erroneo ");
+                        escaner.next();
+                        System.out.print("Introduzca un doubel: ");
+                    }
+                    piezas = escaner.nextInt();
+                }
+
+            }
+
+            System.out.print("Introduzca descripción:  ");
+            String descripcion = escaner.nextLine();
+
+            if (tipo.contains("pintura")) {
+
+                System.out.print("Introduzca tecnica:  ");
+                String tecnica = escaner.nextLine();
+
+                pinturasTotales[posicionArray]
+                        .setNombre(nombre.isBlank() ? pinturasTotales[posicionArray].getNombre() : nombre);
+                pinturasTotales[posicionArray]
+                        .setAutor(autor.isBlank() ? pinturasTotales[posicionArray].getAutor() : autor);
+                pinturasTotales[posicionArray]
+                        .setPrecio(precio == null ? pinturasTotales[posicionArray].getPrecio() : precio);
+                pinturasTotales[posicionArray]
+                        .setAltura(altura == null ? pinturasTotales[posicionArray].getAltura() : altura);
+                pinturasTotales[posicionArray].setPeso(peso == null ? pinturasTotales[posicionArray].getPeso() : peso);
+                pinturasTotales[posicionArray]
+                        .setTecnica(tecnica.isBlank() ? pinturasTotales[posicionArray].getTecnica() : tecnica);
+                pinturasTotales[posicionArray]
+                        .setPiezas(piezas == -1 ? pinturasTotales[posicionArray].getPiezas() : piezas);
+                pinturasTotales[posicionArray].setDescripcion(
+                        descripcion.isBlank() ? pinturasTotales[posicionArray].getDescripcion() : descripcion);
+
+                System.out.println("*************************************************");
+                System.out.println();
+                visualizarObraPorId(idObra);
+
+            } else {
+                System.out.print("Introduzca material:  ");
+                String material = escaner.nextLine();
+
+                esculturasTotales[posicionArray]
+                        .setNombre(nombre.isBlank() ? esculturasTotales[posicionArray].getNombre() : nombre);
+                esculturasTotales[posicionArray]
+                        .setAutor(autor.isBlank() ? esculturasTotales[posicionArray].getAutor() : autor);
+                esculturasTotales[posicionArray]
+                        .setPrecio(precio == null ? esculturasTotales[posicionArray].getPrecio() : precio);
+                esculturasTotales[posicionArray]
+                        .setAltura(altura == null ? esculturasTotales[posicionArray].getAltura() : altura);
+                esculturasTotales[posicionArray]
+                        .setPeso(peso == null ? esculturasTotales[posicionArray].getPeso() : peso);
+                esculturasTotales[posicionArray]
+                        .setTecnica(material.isBlank() ? esculturasTotales[posicionArray].getTecnica() : material);
+                esculturasTotales[posicionArray]
+                        .setPiezas(piezas == -1 ? esculturasTotales[posicionArray].getPiezas() : piezas);
+                esculturasTotales[posicionArray].setDescripcion(
+                        descripcion.isBlank() ? esculturasTotales[posicionArray].getDescripcion() : descripcion);
+
+                System.out.println("*************************************************");
+                System.out.println();
+                visualizarObraPorId(idObra);
+
+            }
+
+        } else {
+            System.out.println("*************************************************");
+            System.out.println("*     El tipo de obra no es un tipo válido      *");
+            System.out.println("*       La obra no existe en la BBDD            *");
+            System.out.println("*         Vuelva a iniciar el proceso           *");
+            System.out.println("*************************************************");
+        }
+
+    }
 
     private static int generadorId() {
 
