@@ -320,6 +320,83 @@ public class Almacen {
         }
 
     }
+    public static void precioVenta(Scanner escaner, int idObra) {
+
+        String tipo = existeObra(idObra);
+
+        if (!tipo.equals("noExiste")) {
+            Double precioActualObra;
+            Double importePorPeso;
+            Double importePorAltura;
+            Double importePorPiezas = 0.0;
+            int posicionArray = Integer.parseInt(tipo.substring(tipo.length() - 1));
+
+            if (tipo.contains("escultura")) {
+                precioActualObra = esculturasTotales[posicionArray].getPrecio();
+
+                System.out.println("Nombre: " + esculturasTotales[posicionArray].getNombre());
+                System.out.println("Altura(m): " + esculturasTotales[posicionArray].getAltura());
+                System.out.println("Peso(t): " + esculturasTotales[posicionArray].getPeso());
+                System.out.println("Número de piezas: " + esculturasTotales[posicionArray].getPiezas());
+                System.out.println("Precio(€): " + esculturasTotales[posicionArray].getPrecio());
+                System.out.println("Comisión galería(€): " + (esculturasTotales[posicionArray].getPrecio() * 0.25));
+
+                importePorPeso = (esculturasTotales[posicionArray].getPeso() > 0.001) ? 100.0 : 20.0;
+                System.out.println("Importe por peso(€): " + importePorPeso);
+
+                importePorAltura = (esculturasTotales[posicionArray].getAltura() > 2) ? 100.0 : 20.0;
+                System.out.println(
+                        "Importe por altura(€): " + importePorAltura * esculturasTotales[posicionArray].getPiezas());
+
+                if (esculturasTotales[posicionArray].getPiezas() > 2) {
+                    for (int i = 2; i < esculturasTotales[posicionArray].getPiezas(); i++) {
+                        System.out.println("Importe adicional - Pieza " + (i + 1) + "(€): 10");
+                        importePorPiezas = importePorPiezas + 10;
+                    }
+                }
+
+                Double precioDeVenta = precioActualObra + (esculturasTotales[posicionArray].getPrecio() * 0.25)
+                        + importePorAltura + importePorPeso + importePorPiezas + 50;
+                System.out.println("Precio de venta(€): " + precioDeVenta);
+
+                System.out.println("Descuento por escultura(€): " + (precioDeVenta * 0.20));
+                System.out.println("Descuento por minipulación(€): " + 50);
+                System.out.println("Precio final de venta(€): " + (precioDeVenta - (precioDeVenta * 0.20)));
+
+            } else {
+                precioActualObra = pinturasTotales[posicionArray].getPrecio();
+
+                System.out.println("Nombre: " + pinturasTotales[posicionArray].getNombre());
+                System.out.println("Altura(m): " + pinturasTotales[posicionArray].getAltura());
+                System.out.println("Peso(t): " + pinturasTotales[posicionArray].getPeso());
+                System.out.println("Número de piezas: " + pinturasTotales[posicionArray].getPiezas());
+                System.out.println("Precio(€): " + pinturasTotales[posicionArray].getPrecio());
+                System.out.println("Comisión galería(€): " + (pinturasTotales[posicionArray].getPrecio() * 0.25));
+
+                importePorPeso = (pinturasTotales[posicionArray].getPeso() > 0.001) ? 100.0 : 20.0;
+                System.out.println("Importe por peso(€): " + importePorPeso);
+
+                importePorAltura = (pinturasTotales[posicionArray].getAltura() > 2) ? 100.0 : 20.0;
+                System.out.println(
+                        "Importe por altura(€): " + importePorAltura * pinturasTotales[posicionArray].getPiezas());
+
+                if (pinturasTotales[posicionArray].getPiezas() > 2) {
+                    for (int i = 2; i < pinturasTotales[posicionArray].getPiezas(); i++) {
+                        System.out.println("Importe adicional - Pieza " + (i + 1) + "(€): 10");
+                        importePorPiezas = importePorPiezas + 10;
+                    }
+                }
+
+                Double precioDeVenta = precioActualObra + (pinturasTotales[posicionArray].getPrecio() * 0.25)
+                        + importePorAltura + importePorPeso + importePorPiezas;
+                System.out.println("Precio de venta(€): " + precioDeVenta);
+
+                System.out.println("Descuento por pictorica(€): " + (precioDeVenta * 0.10));
+                System.out.println("Precio final de venta(€): " + (precioDeVenta - (precioDeVenta * 0.10)));
+            }
+
+        }
+    }
 
     private static int generadorId() {
 

@@ -29,10 +29,16 @@ public class App {
                     System.out.print("¿Quieres crear una escultura o una pintura? ");
                     escaner.nextLine();
                     Almacen.annadirObra(escaner, escaner.nextLine());
-
                     break;
                 case 3:
+                    System.out.println("********************************************");
+                    System.out.println("* Proceso para modificar una nueva obra    *");
+                    System.out.println("********************************************");
+                    System.out.println();
 
+                    System.out.print("¿Que obra quieres modificar? ");
+                    escaner.nextLine();
+                    Almacen.modificarObra(escaner, escaner.nextInt());
                     break;
                 case 4:
                     System.out.print("¿Cual es el ID de la obra que quieres mostrar? ");
