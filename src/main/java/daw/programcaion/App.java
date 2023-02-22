@@ -45,10 +45,18 @@ public class App {
                     Almacen.visualizarObraPorId(escaner.nextInt());
                     break;
                 case 5:
+                    System.out.println("********************************************");
+                    System.out.println("*              Precio de Venta             *");
+                    System.out.println("********************************************");
+                    System.out.println();
 
+                    System.out.print("¿De que obra quieres saber el precio de venta?(Introduce el id) ");
+                    escaner.nextLine();
+                    Almacen.precioVenta(escaner, escaner.nextInt());
                     break;
                 case 6:
-
+                    System.out.print("¿Cual es el ID de la obra que quieres mostrar? ");
+                    Almacen.visualizarEtiquetaObra(escaner.nextInt());
                     break;
                 case 0:
                     salir = true;

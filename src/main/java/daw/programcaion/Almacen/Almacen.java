@@ -397,6 +397,44 @@ public class Almacen {
 
         }
     }
+    public static void visualizarEtiquetaObra(int id) {
+
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+
+        Boolean existe = false;
+
+        String tipoEncontrado = existeObra(id);
+
+        if (!tipoEncontrado.equals("noExiste")) {
+            existe = true;
+        }
+
+        if (existe) {
+
+            int posicionArray = Integer.parseInt(tipoEncontrado.substring(tipoEncontrado.length() - 1));
+
+            System.out.println("********************************************");
+            System.out.println("*           Etiqueta de la Obra            *");
+            System.out.println("********************************************");
+            System.out.println();
+
+            if (tipoEncontrado.contains("pintura")) {
+                System.out.println("Nombre: " + pinturasTotales[posicionArray].getNombre() + "\n" +
+                        "Autor: " + pinturasTotales[posicionArray].getAutor() + "\n" +
+                        "Descripcion: " + pinturasTotales[posicionArray].getDescripcion() + "\n");
+            } else {
+                System.out.println("Nombre: " + esculturasTotales[posicionArray].getNombre() + "\n" +
+                "Autor: " + esculturasTotales[posicionArray].getAutor() + "\n" +
+                "Descripcion: " + esculturasTotales[posicionArray].getDescripcion() + "\n");
+            }
+        } else {
+            System.out.println("**********************************************");
+            System.out.println("* La pintura con ID: " + id + " no ha sido encontrada *");
+            System.out.println("**********************************************");
+        }
+
+    }
 
     private static int generadorId() {
 
