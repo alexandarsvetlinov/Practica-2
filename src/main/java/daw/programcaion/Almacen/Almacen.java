@@ -49,4 +49,28 @@ public class Almacen {
         return numeroMayor + 1;
     }
     
+        private static void setPinturasTotales(Pintura obraTemp) {
+
+        Pintura[] pinturasArrayTemp = new Pintura[pinturasTotales.length + 1];
+
+        for (int i = 0; i < pinturasTotales.length; i++) {
+            pinturasArrayTemp[i] = pinturasTotales[i];
+        }
+
+        pinturasArrayTemp[pinturasArrayTemp.length - 1] = obraTemp;
+        pinturasTotales = pinturasArrayTemp;
+    }
+
+    private static void setEsculturaTotales(Escultura obraTemp) {
+
+        Escultura[] esculturasArrayTemp = new Escultura[esculturasTotales.length + 1];
+
+        for (int i = 0; i < esculturasTotales.length; i++) {
+            esculturasArrayTemp[i] = esculturasTotales[i];
+        }
+
+        esculturasArrayTemp[esculturasArrayTemp.length - 1] = obraTemp;
+        esculturasTotales = esculturasArrayTemp;
+    }
+
 }
