@@ -66,6 +66,7 @@ public class App
         System.out.println("* 4. Visualizar una obra.                  *");
         System.out.println("* 5. Optener precio de venta de una obra.  *");
         System.out.println("* 6. Imprimir etiqueta.                    *");
+        System.out.println("* 0. Salir                                 *");
         System.out.println("********************************************");
         System.out.println();
     }

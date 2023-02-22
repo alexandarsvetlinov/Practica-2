@@ -1,4 +1,5 @@
 package daw.programcaion.Almacen;
+import java.util.Scanner;
 
 public class Almacen {
     static Pintura obra1 = new Pintura(001, "Pintura", "Guernica", "P.Picaso", 1000, 5, 2, "Oleo", 5,
@@ -29,4 +30,23 @@ public class Almacen {
             System.out.println(esculturasTotales[i]);
         }
     }
+    private static int generadorId() {
+
+        int numeroMayor = 0;
+
+        for (int i = 0; i < pinturasTotales.length; i++) {
+            if (pinturasTotales[i].getId() > numeroMayor) {
+                numeroMayor = pinturasTotales[i].getId();
+            }
+        }
+
+        for (int i = 0; i < esculturasTotales.length; i++) {
+            if (esculturasTotales[i].getId() > numeroMayor) {
+                numeroMayor = esculturasTotales[i].getId();
+            }
+        }
+
+        return numeroMayor + 1;
+    }
+    
 }
