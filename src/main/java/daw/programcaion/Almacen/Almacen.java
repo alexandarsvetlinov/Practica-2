@@ -1,4 +1,5 @@
 package daw.programcaion.Almacen;
+
 import java.util.Scanner;
 
 public class Almacen {
@@ -30,6 +31,7 @@ public class Almacen {
             System.out.println(esculturasTotales[i]);
         }
     }
+
     public static void annadirObra(Scanner escaner, String tipo) {
 
         if (tipo.toLowerCase().equals("pintura")) {
@@ -107,6 +109,7 @@ public class Almacen {
 
         }
     }
+
     private static int generadorId() {
 
         int numeroMayor = 0;
@@ -125,8 +128,8 @@ public class Almacen {
 
         return numeroMayor + 1;
     }
-    
-        private static void setPinturasTotales(Pintura obraTemp) {
+
+    private static void setPinturasTotales(Pintura obraTemp) {
 
         Pintura[] pinturasArrayTemp = new Pintura[pinturasTotales.length + 1];
 
@@ -148,6 +151,36 @@ public class Almacen {
 
         esculturasArrayTemp[esculturasArrayTemp.length - 1] = obraTemp;
         esculturasTotales = esculturasArrayTemp;
+    }
+
+    private static String existeObra(int idObra) {
+
+        Boolean existe = false;
+        String tipoEncontrado = "";
+
+        for (int i = 0; i < pinturasTotales.length; i++) {
+
+            if (pinturasTotales[i].getId() == idObra) {
+                existe = true;
+                tipoEncontrado = "pintura" + i;
+            }
+
+        }
+
+        for (int i = 0; i < esculturasTotales.length; i++) {
+
+            if (esculturasTotales[i].getId() == idObra) {
+                existe = true;
+                tipoEncontrado = "escultura" + i;
+            }
+        }
+
+        if (!existe) {
+            tipoEncontrado = "noExiste";
+        }
+
+        return tipoEncontrado;
+
     }
 
 }
