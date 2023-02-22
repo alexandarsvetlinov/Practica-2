@@ -30,6 +30,83 @@ public class Almacen {
             System.out.println(esculturasTotales[i]);
         }
     }
+    public static void annadirObra(Scanner escaner, String tipo) {
+
+        if (tipo.toLowerCase().equals("pintura")) {
+
+            Pintura obraTemporal = new Pintura();
+            obraTemporal.setId(generadorId());
+            obraTemporal.setTipo("pintura");
+
+            System.out.print("Introduzca nombre:  ");
+            obraTemporal.setNombre(escaner.nextLine());
+            System.out.print("Introduzca autor:  ");
+            obraTemporal.setAutor(escaner.nextLine());
+            System.out.print("Introduzca precio:  ");
+
+            while (!escaner.hasNextDouble()) {
+                System.out.print("Valor erroneo ");
+                escaner.next();
+                System.out.print("Introduzca un doubel: ");
+            }
+            obraTemporal.setPrecio(escaner.nextDouble());
+
+            System.out.print("Introduzca altura:  ");
+            while (!escaner.hasNextDouble()) {
+                System.out.print("Valor erroneo ");
+                escaner.next();
+                System.out.print("Introduzca un doubel: ");
+                obraTemporal.setAltura(escaner.nextDouble());
+            }
+            System.out.print("Introduzca Peso:  ");
+            obraTemporal.setPeso(escaner.nextDouble());
+            escaner.nextLine();
+            System.out.print("Introduzca tecnica:  ");
+            obraTemporal.setTecnica(escaner.nextLine());
+            System.out.print("Introduzca piezas:  ");
+            obraTemporal.setPiezas(escaner.nextInt());
+            escaner.nextLine();
+            System.out.print("Introduzca descripción:  ");
+            obraTemporal.setDescripcion(escaner.nextLine());
+
+            setPinturasTotales(obraTemporal);
+        } else if (tipo.toLowerCase().equals("escultura")) {
+
+            Escultura obraTemporal = new Escultura();
+            obraTemporal.setId(generadorId());
+            obraTemporal.setTipo("escultura");
+
+            System.out.print("Introduzca nombre:  ");
+            obraTemporal.setNombre(escaner.nextLine());
+            System.out.print("Introduzca autor:  ");
+            obraTemporal.setAutor(escaner.nextLine());
+            System.out.print("Introduzca precio:  ");
+            obraTemporal.setPrecio(escaner.nextDouble());
+            System.out.print("Introduzca altura:  ");
+            obraTemporal.setAltura(escaner.nextDouble());
+            System.out.print("Introduzca Peso:  ");
+            obraTemporal.setPeso(escaner.nextDouble());
+            escaner.nextLine();
+            System.out.print("Introduzca material:  ");
+            obraTemporal.setMaterial(escaner.nextLine());
+            System.out.print("Introduzca piezas:  ");
+            obraTemporal.setPiezas(escaner.nextInt());
+            escaner.nextLine();
+            System.out.print("Introduzca descripción:  ");
+            obraTemporal.setDescripcion(escaner.nextLine());
+
+            setEsculturaTotales(obraTemporal);
+
+        } else {
+
+            System.out.println("*************************************************");
+            System.out.println("*     El tipo de obra no es un tipo válido      *");
+            System.out.println("*  Los tipos válidos son: pintura o escultura   *");
+            System.out.println("*         Vuelva a iniciar el proceso           *");
+            System.out.println("*************************************************");
+
+        }
+    }
     private static int generadorId() {
 
         int numeroMayor = 0;

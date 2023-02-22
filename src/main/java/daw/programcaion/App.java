@@ -1,11 +1,10 @@
 package daw.programcaion;
 
-import java.util.Scanner;import daw.programcaion.Almacen.Almacen;
+import java.util.Scanner;
+import daw.programcaion.Almacen.Almacen;
 
-public class App 
-{
-    public static void main( String[] args )
-    {
+public class App {
+    public static void main(String[] args) {
         System.out.println("\u001B[31m");
         Scanner escaner = new Scanner(System.in);
         boolean salir = false;
@@ -19,10 +18,17 @@ public class App
 
             switch (opcionSeleccionada) {
                 case 1:
-                   Almacen.visualizarTodoElAlmacen();
+                    Almacen.visualizarTodoElAlmacen();
                     break;
                 case 2:
+                    System.out.println("********************************************");
+                    System.out.println("*    Proceso para añadir una nueva obra    *");
+                    System.out.println("********************************************");
+                    System.out.println();
 
+                    System.out.print("¿Quieres crear una escultura o una pintura? ");
+                    escaner.nextLine();
+                    Almacen.annadirObra(escaner, escaner.nextLine());
 
                     break;
                 case 3:
@@ -32,7 +38,6 @@ public class App
 
                     break;
                 case 5:
-
 
                     break;
                 case 6:
